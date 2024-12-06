@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.13.1 on win32)" generated="2024-12-06T03:20:02.721749" rpa="false" schemaversion="5">
+<suite id="s1" name="Iut Login" source="C:\Users\user\Documents\GitHub\automnation\iut_login.robot">
+<test id="s1-t1" name="Login Using Credentials From File" line="9">
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2024-12-06T03:20:03.306448" level="INFO" html="true">Getting file '&lt;a href="file://C:\Users\user\Documents\GitHub\automnation\credentials.txt"&gt;C:\Users\user\Documents\GitHub\automnation\credentials.txt&lt;/a&gt;'.</msg>
+<msg time="2024-12-06T03:20:03.307062" level="INFO">${content} = username=i2202003
+password=Tqd757ov</msg>
+<var>${content}</var>
+<arg>credentials.txt</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2024-12-06T03:20:03.306130" elapsed="0.001017"/>
+</kw>
+<kw name="Get Line Matching Pattern">
+<msg time="2024-12-06T03:20:03.311264" level="FAIL">No keyword with name 'Get Line Matching Pattern' found.</msg>
+<var>${username}</var>
+<arg>${content}</arg>
+<arg>username=(.*)</arg>
+<status status="FAIL" start="2024-12-06T03:20:03.311180" elapsed="0.000169">No keyword with name 'Get Line Matching Pattern' found.</status>
+</kw>
+<kw name="Get Line Matching Pattern">
+<var>${password}</var>
+<arg>${content}</arg>
+<arg>password=(.*)</arg>
+<status status="NOT RUN" start="2024-12-06T03:20:03.311734" elapsed="0.000055"/>
+</kw>
+<doc>Logs into the website using credentials from a text file.</doc>
+<status status="FAIL" start="2024-12-06T03:20:03.304026" elapsed="0.008135">No keyword with name 'Get Line Matching Pattern' found.</status>
+</test>
+<status status="FAIL" start="2024-12-06T03:20:02.725155" elapsed="0.589389"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Iut Login">Iut Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
