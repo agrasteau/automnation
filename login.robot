@@ -3,7 +3,7 @@ Library    SeleniumLibrary
 Library    OperatingSystem
 
 *** Variables ***
-${LOGIN_URL}    https://webmail.univ-lemans.fr/
+${LOGIN_URL}    http://localhost:5173/
 ${ID_FILE}      id.txt
 ${PASSWORD_FILE}    password.txt
 
@@ -19,15 +19,17 @@ Login Using Credentials From File
     Open Browser    ${LOGIN_URL}    chrome
 
     # Step 3: Fill in the login form
-    Input Text    id:username    ${username.strip()}
+    Input Text    id:id    ${username.strip()}
     Input Text    id:password    ${password.strip()}
-    Click Button    xpath=//button[@name="submit"]
-opening first unread mail
+    Click Button    id:login
 
-    # Step 4: Verify successful login
-    Wait Until Element Is Visible    id:messagelist  10  # Ensure the table is visible
 
-    # Step 5: Click on the first unread message
-    Click Element    xpath=//table[@id="messagelist"]//tbody//tr[contains(@class, "message unread")][1]
+# opening first unread mail
+
+#     # Step 4: Verify successful login
+#     Wait Until Element Is Visible    id:messagelist  10  # Ensure the table is visible
+
+#     # Step 5: Click on the first unread message
+#     Click Element    xpath=//table[@id="messagelist"]//tbody//tr[contains(@class, "message unread")][1]
 
 
