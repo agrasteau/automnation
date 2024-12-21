@@ -22,9 +22,27 @@ Login Using Credentials From File
     Input Text    id:id    ${username.strip()}
     Input Text    id:password    ${password.strip()}
     Click Button    id:login
+    Wait Until Page Contains    students    10  
 
 
-# opening first unread mail
+Navigate to classes
+    Click Element    id:classes
+    Wait Until Page Contains    classes    10  
+Navigate to students
+    Click Element    id:students
+    Wait Until Page Contains     students    10  
+    
+Navigate to grades
+    Click Element    id:grades
+    Wait Until Page Contains    grades    10  
+Navigate to stats
+    Click Element    id:stats
+    Wait Until Page Contains    stats    10  
+
+Logout
+    Click Element    id:logout
+    Wait For Alert    timeout=10
+
 
 #     # Step 4: Verify successful login
 #     Wait Until Element Is Visible    id:messagelist  10  # Ensure the table is visible
@@ -32,4 +50,10 @@ Login Using Credentials From File
 #     # Step 5: Click on the first unread message
 #     Click Element    xpath=//table[@id="messagelist"]//tbody//tr[contains(@class, "message unread")][1]
 
-
+*** Keywords ***
+Wait For Alert
+    [Arguments]    ${timeout}=10
+    Wait Until Keyword Succeeds    ${timeout}s    1s    Check For Alert
+Check For Alert
+    ${alert_present}=    Run Keyword And Return Status    Alert Should Be Present
+    Run Keyword If    not ${alert_present}    Fail    Alert did not appear within timeout
