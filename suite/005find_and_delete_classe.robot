@@ -26,26 +26,20 @@ Login Using Credentials From File
 Navigate to classes
     Click Element    id:classes
     Wait Until Element Is Visible    id:title_classes    10s
-search for a classe
-    Execute JavaScript    document.getElementById('search_bar').click()
-input the research
-    Wait Until Element Is Visible   id:search_bar    10s
-    Input Text    id:search_bar    ${CODE_COURSE}
+
+
 find a classe
+    Search For A Class
+    Input Search Term
     Wait Until Element Is Visible    xpath=//td[text()="${CODE_COURSE}"]
 Delete a classe
     Click Element    xpath=//td[text()="${CODE_COURSE}"]/following-sibling::td//button[contains(@class, 'bg-red')]
     Reload Page
-search for a classe
-    Execute JavaScript    document.getElementById('search_bar').click()
-input the research
-    Wait Until Element Is Visible   id:search_bar    10s
-    Input Text    id:search_bar    ${CODE_COURSE}
 Make sure deletion is effective
+    Search For A Class
+    Input Search Term
     Element Should Not Be Visible    xpath=//td[text()="${CODE_COURSE}"]
 
-temp
-    Wait Until Page Contains    Cours 2.0    100s
 Logout
     Click Element    id:logout
     Wait For Alert    timeout=10
@@ -66,3 +60,10 @@ Clear Input Field
     FOR    ${index}    IN RANGE    ${length}
         Press Keys    ${locator}    BACKSPACE
     END
+
+Input Search Term
+    Wait Until Element Is Visible   id:search_bar    10s
+    Input Text    id:search_bar    ${CODE_COURSE}
+
+Search For A Class
+    Execute JavaScript    document.getElementById('search_bar').click()
