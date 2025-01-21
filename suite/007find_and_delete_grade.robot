@@ -6,7 +6,7 @@ Library    OperatingSystem
 ${LOGIN_URL}    http://localhost:5173/
 ${ID_FILE}      id.txt
 ${PASSWORD_FILE}    password.txt
-${CODE_COURSE}    string string
+${CODE_COURSE}    R1.01 Algorithmique & binaire
 *** Test Cases ***
 Login Using Credentials From File
     [Documentation]    Logs into the website using credentials from separate files for ID and password.
@@ -16,13 +16,13 @@ Login Using Credentials From File
     ${password}=    Get File    ${PASSWORD_FILE}
 
     # Step 2: Open the login page
-    Open Browser    ${LOGIN_URL}    chrome
+    Open Browser    ${LOGIN_URL}    ff
 
     # Step 3: Fill in the login form
     Input Text    id:id    ${username.strip()}
     Input Text    id:password    ${password.strip()}
     Click Button    id:login
-    Wait Until Page Contains    students    10  
+    Wait Until Page Contains    Etudiants    10  
 Navigate to classes
     Click Element    id:grades
     Wait Until Element Is Visible    id:title_grades    10s
@@ -34,6 +34,7 @@ find a classe
     Wait Until Element Is Visible    xpath=//td[text()="${CODE_COURSE}"]
 Delete a classe
     Click Element    xpath=//td[text()="${CODE_COURSE}"]/following-sibling::td//button[contains(@class, 'bg-red')]
+    Check For Alert
     Reload Page
 Make sure deletion is effective
     Search For A Class

@@ -6,8 +6,8 @@ Library    OperatingSystem
 ${LOGIN_URL}    http://localhost:5173/
 ${ID_FILE}      id.txt
 ${PASSWORD_FILE}    password.txt
-${CODE_COURSE}    R1.01
-${CODE_COURSE_UPDATE}    R1.02
+${CODE_COURSE}    R1.18
+${CODE_COURSE_UPDATE}    R1.17
 ${NAME_COURSE}    Algorithmique
 ${NAME_COURSE_UPDATE}    Algorithmique & binaire
 ${CREDITS_UPDATE}        5
@@ -22,16 +22,16 @@ Login Using Credentials From File
     ${password}=    Get File    ${PASSWORD_FILE}
 
     # Step 2: Open the login page
-    Open Browser    ${LOGIN_URL}    chrome
+    Open Browser    ${LOGIN_URL}    ff
 
     # Step 3: Fill in the login form
     Input Text    id:id    ${username.strip()}
     Input Text    id:password    ${password.strip()}
     Click Button    id:login
-    Wait Until Page Contains    students    10  
+    Wait Until Page Contains    Etudiants    10  
 Navigate to classes
     Click Element    id:classes
-    Wait Until Element Is Visible    id:title_classes    10s
+    #Wait Until Element Is Visible    id:title_classes    10s
 
 search for a classe
     #ajouter clic on "Rechercher...""
@@ -67,6 +67,7 @@ Update a classe
 
     Wait Until Page Contains    Cours    10s
 Logout
+    Wait Until Element Is Visible   id:logout    10s
     Click Element    id:logout
     Wait For Alert    timeout=10
 

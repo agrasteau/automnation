@@ -10,10 +10,10 @@ ${CODE_COURSE}    R1.01
 ${NAME_COURSE}    Algorithmique
 ${CREDITS}        3
 ${DESCRIPTION}    Cours sur les bases de l'algorithmique.
-${STUDENT}              string string
-${COURSE}               string
-${GRADE}                10
-${SEMESTER}             1
+${STUDENT}              Daurat Lilian
+${COURSE}               R1.01 Algorithmique & binaire
+${GRADE}                14.02
+${SEMESTER}             S1 2022-2023
 ${ACADEMIC_YEAR}        2022-2023
 
 *** Test Cases ***
@@ -25,13 +25,13 @@ Login Using Credentials From File
     ${password}=    Get File    ${PASSWORD_FILE}
 
     # Step 2: Open the login page
-    Open Browser    ${LOGIN_URL}    chrome
+    Open Browser    ${LOGIN_URL}    ff
 
     # Step 3: Fill in the login form
     Input Text    id:id    ${username.strip()}
     Input Text    id:password    ${password.strip()}
     Click Button    id:login
-    Wait Until Page Contains    students    10  
+    Wait Until Page Contains    Etudiants    10  
 
 
 Navigate to classes
@@ -51,7 +51,7 @@ Filling Grade Form
     Sleep    10
     Execute JavaScript    var option = document.evaluate("//div[@role='listbox']//div[contains(@class, 'v-list-item')][1]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; if (option) option.click();
 
-    Wait Until Page Contains    String String    10s
+    Wait Until Page Contains    Daurat Lilian    10s
 
 Logout
     Click Element    id:logout

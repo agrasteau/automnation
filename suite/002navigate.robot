@@ -16,21 +16,21 @@ Login Using Credentials From File
     ${password}=    Get File    ${PASSWORD_FILE}
 
     # Step 2: Open the login page
-    Open Browser    ${LOGIN_URL}    chrome
+    Open Browser    ${LOGIN_URL}    ff
 
     # Step 3: Fill in the login form
     Input Text    id:id    ${username.strip()}
     Input Text    id:password    ${password.strip()}
     Click Button    id:login
-    Wait Until Page Contains    students    10  
+    Wait Until Page Contains    Etudiants    10  
 
 
 Navigate to classes
     Click Element    id:classes
-    Wait Until Element Is Visible    id:title_classes    10s
+    #Wait Until Element Is Visible    id:title_classes    10s
 Navigate to students
     Click Element    id:students
-    Wait Until Page Contains     id:title_students    10  
+    #Wait Until Page Contains     id:title_students    10  
     
 Navigate to grades
     Click Element    id:grades

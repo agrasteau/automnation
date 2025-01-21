@@ -6,7 +6,7 @@ Library    OperatingSystem
 ${LOGIN_URL}    http://localhost:5173/
 ${ID_FILE}      id.txt
 ${PASSWORD_FILE}    password.txt
-${CODE_COURSE}    R1.02
+${CODE_COURSE}    R1.17
 *** Test Cases ***
 Login Using Credentials From File
     [Documentation]    Logs into the website using credentials from separate files for ID and password.
@@ -16,13 +16,13 @@ Login Using Credentials From File
     ${password}=    Get File    ${PASSWORD_FILE}
 
     # Step 2: Open the login page
-    Open Browser    ${LOGIN_URL}    chrome
+    Open Browser    ${LOGIN_URL}    ff
 
     # Step 3: Fill in the login form
     Input Text    id:id    ${username.strip()}
     Input Text    id:password    ${password.strip()}
     Click Button    id:login
-    Wait Until Page Contains    students    10  
+    Wait Until Page Contains    Etudiants    10  
 Navigate to classes
     Click Element    id:classes
     Wait Until Element Is Visible    id:title_classes    10s
@@ -31,9 +31,11 @@ Navigate to classes
 find a classe
     Search For A Class
     Input Search Term
+temp2
     Wait Until Element Is Visible    xpath=//td[text()="${CODE_COURSE}"]
 Delete a classe
     Click Element    xpath=//td[text()="${CODE_COURSE}"]/following-sibling::td//button[contains(@class, 'bg-red')]
+temp3
     Reload Page
 Make sure deletion is effective
     Search For A Class
@@ -63,7 +65,10 @@ Clear Input Field
 
 Input Search Term
     Wait Until Element Is Visible   id:search_bar    10s
+    Execute JavaScript    document.getElementById('search_bar').click()
     Input Text    id:search_bar    ${CODE_COURSE}
 
+
 Search For A Class
+    #Wait Until Element Is Visible   id:search_bar    10s
     Execute JavaScript    document.getElementById('search_bar').click()

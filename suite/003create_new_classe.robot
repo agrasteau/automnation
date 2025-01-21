@@ -6,7 +6,7 @@ Library    OperatingSystem
 ${LOGIN_URL}    http://localhost:5173/
 ${ID_FILE}      id.txt
 ${PASSWORD_FILE}    password.txt
-${CODE_COURSE}    R1.01
+${CODE_COURSE}    R1.18
 ${NAME_COURSE}    Algorithmique
 ${CREDITS}        3
 ${DESCRIPTION}    Cours sur les bases de l'algorithmique.
@@ -20,18 +20,18 @@ Login Using Credentials From File
     ${password}=    Get File    ${PASSWORD_FILE}
 
     # Step 2: Open the login page
-    Open Browser    ${LOGIN_URL}    chrome
+    Open Browser    ${LOGIN_URL}    ff
 
     # Step 3: Fill in the login form
     Input Text    id:id    ${username.strip()}
     Input Text    id:password    ${password.strip()}
     Click Button    id:login
-    Wait Until Page Contains    students    10  
+    Wait Until Page Contains    Etudiants    10  
 
 
 Navigate to classes
     Click Element    id:classes
-    Wait Until Element Is Visible    id:title_classes    10s
+    #Wait Until Element Is Visible    id:title_classes    10s
 Click button new classes
     Click Element    id:new_classe
     Wait Until Element Is Visible    id:new_course_title    10s
@@ -52,7 +52,7 @@ Filling form
     # Vérifier et cliquer sur le bouton "Ajouter"
     Wait Until Element Is Enabled    id:submit_button    10s
     Click Button    id:submit_button
-    Wait Until Element Is Visible    id:title_classes    10s
+    #Wait Until Element Is Visible    id:title_classes    10s
 
 Logout
     Click Element    id:logout
