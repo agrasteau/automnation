@@ -43,7 +43,7 @@ upload the 2nd image
 validate the media
 
     Next button
-    Validation button     #⚠️sometimes infinite loading occures without explaination and it may requires to restart the tests
+    Validation button     #⚠️sometimes infinite loading may occures without explaination and it may requires to restart the tests
     Next button
 display augementation
 
@@ -55,5 +55,5 @@ display augementation
     Run Keyword If    '${status}' == 'FAIL'    Log    ⚠️ Expected behavior: The element is still visible after 25s miss detection.    WARN
     Click home button
 
-    sleep     10s
+    #sleep     10s
     Close Browser

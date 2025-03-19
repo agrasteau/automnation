@@ -13,6 +13,6 @@ Open Web Application
     Sleep    2
     Click Element    id=proceed-link
 
-    Title Should Be    MIXAP  # Remplacez "Example Page" par le titre attendu de votre page
+    Title Should Be    MIXAP  
     Sleep    5   # Attend 5 secondes pour vérifier si la page s'ouvre correctement
     Close All Browsers

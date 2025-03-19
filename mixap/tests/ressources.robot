@@ -126,4 +126,19 @@ Create empty augementation
     ${status}    ${message}=    Run Keyword And Ignore Error    Wait for detection 
     Run Keyword If    '${status}' == 'FAIL'    Log    ⚠️ Expected behavior: The element is still visible after 25s miss detection.    WARN
     Click home button
+Create empty validation
     
+    Create Activity
+    Select Activity Type    Image Validation
+    Next button
+    Sleep    2s  
+    Snap the background
+    Validate the image
+    Next button
+    Validation button
+    Next button
+    Next button
+    Sleep    5s    
+    ${status}    ${message}=    Run Keyword And Ignore Error    Wait for detection 
+    Run Keyword If    '${status}' == 'FAIL'    Log    ⚠️ Expected behavior: The element is still visible after 25s miss detection.    WARN
+    Click home button
