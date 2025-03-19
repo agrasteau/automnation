@@ -40,5 +40,6 @@ display augementation
     ${status}    ${message}=    Run Keyword And Ignore Error    Wait for detection 
     Run Keyword If    '${status}' == 'FAIL'    Log    ⚠️ Expected behavior: The element is still visible after 25s miss detection.    WARN
     Click home button
-    sleep     20s     #used to watch the result can be commentend if necessary
+#    sleep     20s     #used to watch the result can be commentend if necessary
+
     Close Browser

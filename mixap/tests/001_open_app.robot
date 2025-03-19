@@ -16,4 +16,3 @@ Open Web Application
     Title Should Be    MIXAP  # Remplacez "Example Page" par le titre attendu de votre page
     Sleep    5   # Attend 5 secondes pour vérifier si la page s'ouvre correctement
     Close All Browsers
-#todo DOCumentation on each test, + ressources file

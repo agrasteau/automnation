@@ -33,6 +33,16 @@ Open Web Application
     Click Element    id=proceed-link
     Title Should Be    MIXAP    timeout 10s
     Wait Until Element Is Visible    xpath=//button[span[text()='Activity']]
+Open Web Application without closing
+    [Documentation]    ouvre le site avec le navigateur chrome en suivant les paramètres
+    ${chrome_options}=    Set Chrome Options
+    Open Browser    ${URL}    chrome    options=${CHROME_OPTIONS}
+    Wait Until Element Is Visible    id=details-button    timeout=10s
+    Click Element    id=details-button
+    Wait Until Element Is Visible    id=proceed-link    timeout=10s
+    Click Element    id=proceed-link
+    Title Should Be    MIXAP    timeout 10s
+    Wait Until Element Is Visible    xpath=//button[span[text()='Activity']]
 
 Create Activity
     [Documentation]    clic sur le bouton création d'activité
@@ -72,7 +82,7 @@ Validation button
 
 Wait for detection 
     [Documentation]    wait for the augementation to be detected using the visibility of instructions
-    Wait Until Element Is Not Visible     xpath=//span[contains(text(), 'Place the image in the frame')]    timeout=25s
+    Wait Until Element Is Not Visible     xpath=//span[contains(text(), 'Place the image in the frame')]    timeout=5s
 
 Click home button
     [Documentation]    Click on the home button using the house icon
@@ -102,3 +112,18 @@ Edit Activity Description
     Execute JavaScript    document.querySelector("textarea:not([style*='visibility:hidden'])").value = "${description}";
     Press Keys    xpath=//textarea[not(contains(@style, 'visibility:hidden'))]    RETURN
     Sleep    2    # Manually wait for the text to be updated
+
+Create empty augementation
+    Create Activity
+    Select Activity Type    Image Augmentation
+    Next button
+    Snap the background
+    Validate the image
+    Next button
+    Validation button
+    Next button
+    Sleep    2s
+    ${status}    ${message}=    Run Keyword And Ignore Error    Wait for detection 
+    Run Keyword If    '${status}' == 'FAIL'    Log    ⚠️ Expected behavior: The element is still visible after 25s miss detection.    WARN
+    Click home button
+    
